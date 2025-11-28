@@ -1,0 +1,69 @@
+# Automotive Data Pipeline Project
+
+This project builds a robust data pipeline for acquiring, processing, transforming, and loading automotive datasets from public U.S. government sources using Databricks and the Medallion architecture. It focuses on objectives, data sources, processing layers, automation strategy, challenges, and dashboard insights derived from the data.
+
+## Table of Contents
+- [Project Objective and Data Sources](#project-objective-and-data-sources)
+- [Medallion Architecture Implementation](#medallion-architecture-implementation)
+- [NHTSA Data Pipeline](#nhtsa-data-pipeline)
+- [AFDC Data Pipeline](#afdc-data-pipeline)
+- [EPA Data Pipeline](#epa-data-pipeline)
+- [Automation Strategy](#automation-strategy)
+- [Challenges and Solutions](#challenges-and-solutions)
+- [Repository Organization](#repository-organization)
+- [Dashboard Insights](#dashboard-insights)
+
+## Project Objective and Data Sources
+The goal is to create a pipeline in Python or SQL to handle automotive data from:
+- **NHTSA Vehicle Complaints**
+- **DOE Alternative Fuel Stations (AFDC)**
+- **EPA Vehicle Fuel Economy**  
+
+These datasets support safety analysis, sustainability, and regulatory compliance.
+
+## Medallion Architecture Implementation
+The pipeline uses Databricks with Bronze-Silver-Gold layers:
+- **Bronze:** Stores raw ingested data  
+- **Silver:** Cleansed and standardized data  
+- **Gold:** Fully processed, analysis-ready datasets  
+
+This structure ensures scalability, data quality, auditability, and efficient querying.
+
+## NHTSA Data Pipeline
+- Download and extract ZIP files.  
+- Read raw files with defined schemas.  
+- Store in Delta tables.  
+- Clean data by trimming whitespace, handling nulls with safe defaults, deduplicating, and repartitioning.  
+- Write Silver and Gold tables with appropriate data types for analysis.  
+
+## AFDC Data Pipeline
+- Download CSV and move to raw storage.  
+- Ingest into Bronze Delta tables.  
+- Silver layer: Clean strings, convert booleans, cast numerics, handle nulls, remove duplicates, reorder columns.  
+- Gold layer: Filter unusable records, standardize unknown values, drop irrelevant columns, finalize dataset for business use.  
+
+## EPA Data Pipeline
+- Ingest CSV files into Bronze tables.  
+- Silver layer: Trim strings, parse timestamps, validate IDs, profile numerics, handle nulls.  
+- Gold layer: Enforce schema, correct numeric values, reorder columns, prepare dataset for reporting and analytics.  
+
+## Automation Strategy
+- Manual download and validation to avoid API issues.  
+- Automated processing with Databricks Jobs or Delta Live Tables.  
+- Ensures controlled ingestion, reliable transformations, scheduling, monitoring, and error handling.  
+
+## Challenges and Solutions
+- **Challenges:** Unstable APIs, large initial data loads, nulls with no data owner.  
+- **Solutions:** Manual downloads, chunked streaming, file extraction, Autoloader for automatic file detection, and replacing nulls with type-appropriate safe defaults to maintain completeness.  
+
+## Repository Organization
+- Structured by data source.  
+- Contains Databricks notebooks, CSV samples, documentation, and dashboard images.  
+- Facilitates workflow navigation and understanding of business logic.  
+
+## Dashboard Insights
+- **NHTSA:** Complaints by manufacturer and component.  
+- **AFDC:** Station counts by state and fuel type.  
+- **EPA:** Fuel efficiency and emissions metrics.  
+
+Supports quality improvement, infrastructure planning, sustainability, and regulatory decisions.
