@@ -2,30 +2,19 @@
 
 This project builds a robust data pipeline for acquiring, processing, transforming, and loading automotive datasets from public U.S. government sources using Databricks and the Medallion architecture. It focuses on objectives, data sources, processing layers, automation strategy, challenges, and dashboard insights derived from the data.
 
-## Table of Contents
-- [Project Objective and Data Sources](#project-objective-and-data-sources)
-- [Medallion Architecture Implementation](#medallion-architecture-implementation)
-- [NHTSA Data Pipeline](#nhtsa-data-pipeline)
-- [AFDC Data Pipeline](#afdc-data-pipeline)
-- [EPA Data Pipeline](#epa-data-pipeline)
-- [Automation Strategy](#automation-strategy)
-- [Challenges and Solutions](#challenges-and-solutions)
-- [Repository Organization](#repository-organization)
-- [Dashboard Insights](#dashboard-insights)
-
 ## Project Objective and Data Sources
 The goal is to create a pipeline in Python or SQL to handle automotive data from:  
-- **NHTSA Vehicle Complaints**  
-- **DOE Alternative Fuel Stations (AFDC)**  
-- **EPA Vehicle Fuel Economy**  
+- NHTSA Vehicle Complaints  
+- DOE Alternative Fuel Stations (AFDC)  
+- EPA Vehicle Fuel Economy  
 
 These datasets support safety analysis, sustainability, and regulatory compliance.
 
 ## Medallion Architecture Implementation
 The pipeline uses Databricks with Bronze-Silver-Gold layers:  
-- **Bronze:** Stores raw ingested data  
-- **Silver:** Cleansed and standardized data  
-- **Gold:** Fully processed, analysis-ready datasets  
+- Bronze: Stores raw ingested data  
+- Silver: Cleansed and standardized data  
+- Gold: Fully processed, analysis-ready datasets  
 
 This structure ensures scalability, data quality, auditability, and efficient querying.
 
@@ -53,8 +42,8 @@ This structure ensures scalability, data quality, auditability, and efficient qu
 - Ensures controlled ingestion, reliable transformations, scheduling, monitoring, and error handling
 
 ## Challenges and Solutions
-- **Challenges:** Unstable APIs, large initial data loads, nulls with no data owner  
-- **Solutions:** Manual downloads, chunked streaming, file extraction, Autoloader for automatic file detection, replace nulls with type-appropriate safe defaults to maintain completeness
+- Challenges: Unstable APIs, large initial data loads, nulls with no data owner  
+- Solutions: Manual downloads, chunked streaming, file extraction, Autoloader for automatic file detection, replace nulls with type-appropriate safe defaults to maintain completeness
 
 ## Repository Organization
 - Structured by data source  
@@ -62,8 +51,8 @@ This structure ensures scalability, data quality, auditability, and efficient qu
 - Facilitates workflow navigation and understanding of business logic
 
 ## Dashboard Insights
-- **NHTSA:** Complaints by manufacturer and component  
-- **AFDC:** Station counts by state and fuel type  
-- **EPA:** Fuel efficiency and emissions metrics  
+- NHTSA: Complaints by manufacturer and component  
+- AFDC: Station counts by state and fuel type  
+- EPA: Fuel efficiency and emissions metrics  
 
 Supports quality improvement, infrastructure planning, sustainability, and regulatory decisions
