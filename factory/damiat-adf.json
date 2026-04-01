@@ -1,0 +1,9 @@
+{
+	"name": "damiat-adf",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "72def6b7-2101-4b43-963d-555073e6a121",
+		"tenantId": "bd6da290-49cb-436a-b136-eadbc261c1c9"
+	}
+}
